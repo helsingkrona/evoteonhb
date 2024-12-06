@@ -24,7 +24,7 @@ class TableGenerator {
 
             // Loop through results; Each row is an alternatives result
             while($row = $res->fetch_assoc()) {
-                $tot = $row["tot"]; // Votes accepted
+                $tot = $evote->getTotNbrOfCodeIdsByElectionId; // Votes accepted
                 $percent = "- ";
                 $max = $evote->getMaxAltByAltId($row["id"]);
                 $nbr_alternatives = $evote->getTotAltByElectionId($row["e_id"]);
