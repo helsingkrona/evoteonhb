@@ -127,6 +127,27 @@ class Evote {
         return $count;
     }
 
+    /**
+     * Get the total number of code_ids sed in an election
+     * for the election with this ID
+     * 
+     * @param string $election_id Election ID
+     * @return int Number of unique voters
+     */
+    public function getTotNbrOfCodeIdsByElectionId($election_id) {
+        $conn = $this->connect();
+        $id = mysqli_real_escape_string($conn, $election_id);
+        $sql = "SELECT COUNT(DISTINCT code_id) FROM elections_usage
+                WHERE election_id=$election_id";
+        $r = $conn->query($sql);
+        $count = 0;
+        while($row = $r->fetch_array()){
+            $count = $row[0];
+        }
+        $conn->close();
+        return $count;
+    }
+
     // ser om en lista med val tillhör rätt valomgång
     public function checkRightElection($alt_ids){
         $conn = $this->connect();
