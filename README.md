@@ -1,5 +1,5 @@
 # E-vote
-E-vote - Your digital voting system
+E-vote - Your digital voting system - Systemet är anpasat av Georg Hanö Ivarsson för att passa nationsmöten på Helsingkrona.
 
 E-vote is a voting system designed to be used for meetings with a limited number of people. For example with different kind of associations or communities. E-vote guarantees the anonymity of every voter and gives easy control of every voting session by using personal and temporary codes that every voter has to identify him- or herself with. Temporary codes makes sure nobody not at the meeting can vote.
 
