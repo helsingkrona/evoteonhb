@@ -81,9 +81,9 @@ if(!$ongoingSession){ ?>
 		<?php
 
 		// Generera tabell med förra omgångens resultat.
-		echo "<h3>".getLocalizedText("Previous election round")."</h3>";
-		echo "<hr>";
-		$tg->generateResultTable("last");
+		//echo "<h3>".getLocalizedText("Previous election round")."</h3>";
+		//echo "<hr>";
+		//$tg->generateResultTable("last");
 
 	# ------------- VALOMGÅNG PÅGÅR ----------------
 	}else{
