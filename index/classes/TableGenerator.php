@@ -24,7 +24,7 @@ class TableGenerator {
 
             // Loop through results; Each row is an alternatives result
             while($row = $res->fetch_assoc()) {
-                $tot = $evote->getTotNbrOfCodeIdsByElectionId; // Votes accepted
+                $tot = $evote->getTotNbrOfCodeIdsByElectionId($row["e_id"]); // Votes accepted
                 $percent = "- ";
                 $max = $evote->getMaxAltByAltId($row["id"]);
                 $nbr_alternatives = $evote->getTotAltByElectionId($row["e_id"]);
@@ -35,7 +35,7 @@ class TableGenerator {
                 if($e_id != $row["e_id"]){
                     // Table header
                     echo "<tr class=\"rowheader\">
-                        <th colspan=\"3\">".$row["e_name"]." <wbr>($tot ".getLocalizedText("votes").", $max ".getLocalizedText("opt.").")</th>
+                        <th colspan=\"3\">".$row["e_name"]." <wbr>($tot ".getLocalizedText("registered votes").", $max ".getLocalizedText("options available").")</th>
                         </tr>";
             		$e_id = $row["e_id"];
             		$p = 1;
@@ -123,7 +123,7 @@ class TableGenerator {
                 }
                 if($e_id != $row["e_id"]){
                     echo "<tr class=\"rowheader\">
-                        <th colspan=\"2\">".$row["e_name"]." <wbr>($tot ".getLocalizedText("votes").", $max ".getLocalizedText("opt.").")</th>
+                        <th colspan=\"2\">".$row["e_name"]." <wbr>($tot ".getLocalizedText("votes").", $max ".getLocalizedText("options available").")</th>
                         </tr>";
             		$e_id = $row["e_id"];
             		$p = 1;

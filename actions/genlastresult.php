@@ -23,7 +23,7 @@ if($evote->verifyUser($_SESSION["user"], 1) || $evote->verifyUser($_SESSION["use
             }
             if($e_id != $row["e_id"]){
                 echo "<tr class=\"rowheader\">
-                    <th colspan=\"2\">".$row["e_name"]." <wbr>($tot". getLocalizedText("votes").", $max ".getLocalizedText("alt.").".)</th>
+                    <th colspan=\"2\">".$row["e_name"]." <wbr>($tot". getLocalizedText("registered votes").", $max ".getLocalizedText("options available").".)</th>
                     </tr>";
         		$e_id = $row["e_id"];
         		$p = 1;
