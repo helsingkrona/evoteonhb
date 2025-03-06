@@ -146,7 +146,7 @@ class Evote {
         }
         $conn->close();
         return $count;
-    }
+    } 
 
     // ser om en lista med val tillhör rätt valomgång
     public function checkRightElection($alt_ids){
@@ -378,6 +378,15 @@ class Evote {
             $opt = mysqli_real_escape_string($conn, $opt);
             $sql2 .= "(\"$last_id\",\"$opt\", 0),";
         }
+        $vacant_options = range(1, $max);
+
+        $vacant_string = " - Vakant"
+        foreach ($vacant_options as $opt){
+            $opt .= $vacant_string;
+            $opt = mysqli_real_escape_string($conn, $opt);
+            $sql2 .= "(\"$last_id\",\"$opt\", 0),";
+        }
+        while
         $sql2 .= "(\"$last_id\",\"-Blank-\" , 0)";
         if ($conn->query($sql2) === TRUE) {
                 echo "Database created successfully";
