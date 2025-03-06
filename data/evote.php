@@ -158,7 +158,15 @@ class Evote {
             $id = $row[0];
         }
         $id = mysqli_real_escape_string($conn, $id);
-	    return getTotNbrOfCodeIdsByElectionId($id);
+	    $sql = "SELECT COUNT(DISTINCT code_id) FROM elections_usage
+                WHERE election_id=$id";
+        $r = $conn->query($sql);
+        $count = 0;
+        while($row = $r->fetch_array()){
+            $count = $row[0];
+        }
+        $conn->close();
+        return $count;
     }
 
     // ser om en lista med val tillhör rätt valomgång
