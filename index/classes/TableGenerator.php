@@ -43,11 +43,8 @@ class TableGenerator {
                 }
 
                 $style = "" ;
-                if($row["votes"] != 0 && $p<=$max){
+                if($row["votes"] != 0 && $p<=$max && ($row["votes"]/$tot) >= 0.5){
                     $style = "rowwin";
-                } else if($row["votes"] != 0 && $row["votes"] == $last_votes && $p - 1 <= $limit){
-                    $style = "rowtie";
-                    $limit++;
                 }
                 
                 echo "<tr class=$style><td class=\"col-md-4 col-xs-4\" ><b>$p</b> (".$row["votes"].", $percent) </td>
