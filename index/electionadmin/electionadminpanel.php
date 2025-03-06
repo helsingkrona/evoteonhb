@@ -87,12 +87,14 @@ if(!$ongoingSession){ ?>
 
 	# ------------- VALOMGÅNG PÅGÅR ----------------
 	}else{
+
+		$currentVotes = $evote->getCurrentNbrOfVotes();
 		
 		echo "<h3>".getLocalizedText("Voting in progress")."</h3>";
 		echo "<hr>";
 		echo "<div class=\"well well-sm\" style=\"max-width: 400px\">";
         echo "<div class=\"panel panel-default\">";
-		echo "<h3>". $evote->getCurrentNbrOfVotes(). getLocalizedText(" casted votes so far")"</h3>";
+		echo "<h3>"$currentVotes " ". getLocalizedText(" casted votes so far")."</h3>";
 
 		$tg->generateAvailableOptions();
 
