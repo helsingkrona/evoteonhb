@@ -95,7 +95,7 @@ if(!$ongoingSession){ ?>
 		echo "<div class=\"well well-sm\" style=\"max-width: 400px\">";
         echo "<div class=\"panel panel-default\">";
 		echo "<table class=\"table table\">";
-		echo "<tr><td>$currentVotes ".getLocalizedText(" casted votes so far")." </td></tr>\n";
+		echo "<tr><td>$currentVotes ".getLocalizedText("Casted votes so far")." </td></tr>\n";
 		echo "</table>";
 		$tg->generateAvailableOptions();
 
