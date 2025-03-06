@@ -152,15 +152,14 @@ class Evote {
         $conn = $this->connect();
         $sql =  "SELECT id FROM elections WHERE (active=1)";
         $r = $conn->query($sql);
-        $conn->close();
         $id = 0;
         while($row = $r->fetch_array()){
             $id = $row[0];
         }
         $id = mysqli_real_escape_string($conn, $id);
-	    $sql = "SELECT COUNT(DISTINCT code_id) FROM elections_usage
+	    $sql2 = "SELECT COUNT(DISTINCT code_id) FROM elections_usage
                 WHERE election_id=$id";
-        $r = $conn->query($sql);
+        $r = $conn->query($sql2);
         $count = 0;
         while($row = $r->fetch_array()){
             $count = $row[0];
