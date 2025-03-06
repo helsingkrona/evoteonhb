@@ -380,13 +380,13 @@ class Evote {
         }
         $vacant_options = range(1, $max);
 
-        $vacant_string = " - Vakant"
+        $vacant_string = " - Vakant";
         foreach ($vacant_options as $opt){
             $opt .= $vacant_string;
             $opt = mysqli_real_escape_string($conn, $opt);
             $sql2 .= "(\"$last_id\",\"$opt\", 0),";
         }
-        while
+
         $sql2 .= "(\"$last_id\",\"-Blank-\" , 0)";
         if ($conn->query($sql2) === TRUE) {
                 echo "Database created successfully";
