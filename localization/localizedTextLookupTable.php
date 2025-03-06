@@ -479,6 +479,10 @@ define("LOCALIZED_TEXT_LOOKUP_TABLE", array(
         "sv"=>"En valomgång är redan igång",
         "scanian"=>"Ejn vaulomgong é rejdan igång",
     ),
+    " casted votes so far"=>array(
+        "sv"=>" röster har inkommit"
+        "scanian"=>" röster har inkommit"
+    ),
     "You must enter at least two candidates"=>array(
         "sv"=>"Du måste ange minst två kandidater",
         "scanian"=>"Due måste ange minst tvåu kandidautor",
