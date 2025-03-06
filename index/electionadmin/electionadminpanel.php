@@ -91,6 +91,7 @@ if(!$ongoingSession){ ?>
 		echo "<hr>";
 		echo "<div class=\"well well-sm\" style=\"max-width: 400px\">";
         echo "<div class=\"panel panel-default\">";
+		echo "<h3>". $evote->getCurrentNbrOfVotes()."</h3>";
 
 		$tg->generateAvailableOptions();
 

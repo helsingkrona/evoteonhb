@@ -146,7 +146,20 @@ class Evote {
         }
         $conn->close();
         return $count;
-    } 
+    }
+
+    public function getCurrentNbrOfVotes(){
+        $conn = $this->connect();
+        $sql =  "SELECT id FROM elections WHERE (active=1)";
+        $r = $conn->query($sql);
+        $conn->close();
+        $id = 0;
+        while($row = $r->fetch_array()){
+            $id = $row[0];
+        }
+        $id = mysqli_real_escape_string($conn, $id);
+	    return getTotNbrOfCodeIdsByElectionId($id);
+    }
 
     // ser om en lista med val tillhör rätt valomgång
     public function checkRightElection($alt_ids){
