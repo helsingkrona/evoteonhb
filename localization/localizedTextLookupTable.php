@@ -63,8 +63,8 @@ define("LOCALIZED_TEXT_LOOKUP_TABLE", array(
         "scanian"=>"E-vote måeste konfigurearas",
     ),
     // Footer
-    "Created by Informationsutskottet at E-sektionen at TLTH \n Modified by it@helsingkrona.se"=>array(
-        "sv"=>"Skapad av Informationsutskottet inom E-sektionen inom TLTH \n Modifierat av it@helsingkrona.se",
+    "Created by Informationsutskottet at E-sektionen at TLTH. Modified by it@helsingkrona.se"=>array(
+        "sv"=>"Skapad av Informationsutskottet inom E-sektionen inom TLTH. Modifierat av it@helsingkrona.se",
         "scanian"=>"Skapad auv Infomationsutskottit inåm E-sektjonen inåm TLTH",
     ),
     "E-vote is open and free software licensed under MPL-2.0. Source code can be found at"=>array(

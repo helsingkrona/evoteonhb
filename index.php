@@ -216,7 +216,7 @@ $randomString = new RandomInfo();
     <!-- Footer -->
     <footer class="text-center col-sm-offset-3">
         <div class="text-center p-3">
-            <p><?php echo getLocalizedText("Created by Informationsutskottet at E-sektionen at TLTH \n Modified by it@helsingkrona.se")?><p>
+            <p><?php echo getLocalizedText("Created by Informationsutskottet at E-sektionen at TLTH. Modified by it@helsingkrona.se")?><p>
             <p><?php echo getLocalizedText("E-vote is open and free software licensed under MPL-2.0. Source code can be found at")?> <a href="https://github.com/esek/evote" target="_blank">github.com/esek/evote</a></p>
         </div>
     </footer>
