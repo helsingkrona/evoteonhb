@@ -43,7 +43,7 @@ class TableGenerator {
                 }
 
                 $style = "" ;
-                if($row["votes"] != 0 && $p<=$max && ($row["votes"]/$tot) >= 0.5){
+                if($row["votes"] != 0 && ($row["votes"]/$tot) >= 0.5){
                     $style = "rowwin";
                 }
                 
