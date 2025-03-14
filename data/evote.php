@@ -402,12 +402,18 @@ class Evote {
 
         $vacant_string = " - Vakant";
         foreach ($vacant_options as $opt){
-            $opt .= $vacant_string;
-            $opt = mysqli_real_escape_string($conn, $opt);
-            $sql2 .= "(\"$last_id\",\"$opt\", 0),";
+            if($opt < $max){
+                $opt .= $vacant_string;
+                $opt = mysqli_real_escape_string($conn, $opt);
+                $sql2 .= "(\"$last_id\",\"$opt\", 0),";
+            } else {
+                $opt .= $vacant_string;
+                $opt = mysqli_real_escape_string($conn, $opt);
+                $sql2 .= "(\"$last_id\",\"$opt\", 0)";
+            }
         }
 
-        $sql2 .= "(\"$last_id\",\"-Blank-\" , 0)";
+        //$sql2 .= "(\"$last_id\",\"-Blank-\" , 0)";
         if ($conn->query($sql2) === TRUE) {
                 echo "Database created successfully";
         } else {
