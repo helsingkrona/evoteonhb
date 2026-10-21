@@ -57,7 +57,7 @@ if(in_array($priv, $access)){
 
         } elseif ($_POST['button'] == 'delete_users') {
             $dialogue = new dialogue();
-            $selected_users = $_POST['marked_users'];
+            $selected_users = $_POST['marked_users'] ?? array();
             if (count($selected_users) > 0) {
                 $evote->deleteUsers($selected_users);
                 $dialogue->appendMessage(getLocalizedText('User deleted'), 'success');

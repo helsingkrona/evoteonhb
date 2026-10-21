@@ -35,7 +35,7 @@ if(isset($_POST["button"])){
 		}
 		$_SESSION['message'] = serialize($dialogue);
 
-		$priv = $evote->getPrivilege($_SESSION["user"]);
+		$priv = $evote->getPrivilege($_SESSION["user"] ?? "");
 		switch ($priv) {
 			case 0:
 				$redirect = "adminmain";

@@ -5,6 +5,8 @@ include "config.php";
 class Evote {
 
     private function connect(){
+	// PHP 8.1+ throws on failed queries by default; keep the old return-FALSE behaviour
+	mysqli_report(MYSQLI_REPORT_OFF);
 	$conn = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB);
         if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
@@ -173,11 +175,14 @@ class Evote {
         $conn = $this->connect();
 
         foreach ($alt_ids as $id) {
-            $id = mysqli_real_escape_string($conn, $id);
+            $id = intval($id);
             $sql =  "SELECT active FROM elections
                     WHERE id=(SELECT election_id FROM elections_alternatives WHERE id=$id)";
             $r = $conn->query($sql);
-            $count = 0;
+            // Unknown alternative IDs are not part of the right election either
+            if($r->num_rows == 0){
+                return FALSE;
+            }
             while($row = $r->fetch_array()){
                 if(!$row[0]){
                     return FALSE;
@@ -225,6 +230,8 @@ class Evote {
     public function createNewUser($username, $password, $privilege){
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $conn = $this->connect();
+        $username = mysqli_real_escape_string($conn, $username);
+        $privilege = intval($privilege);
         $sql =  "INSERT INTO user (username, password, privilege) VALUES (\"$username\", \"$hash\", \"$privilege\")";
         $r = $conn->query($sql);
 
@@ -232,7 +239,7 @@ class Evote {
 
     public function verifyUser($username, $privilege){
         $conn = $this->connect();
-        $username = mysqli_real_escape_string($conn, $username);
+        $username = mysqli_real_escape_string($conn, (string)$username);
         $sql =  "SELECT privilege FROM user WHERE (username=\"$username\")";
         $r = $conn->query($sql);
         if($r != FALSE){
@@ -250,7 +257,7 @@ class Evote {
 
     public function getPrivilege($username){
         $conn = $this->connect();
-        $username = mysqli_real_escape_string($conn, $username);
+        $username = mysqli_real_escape_string($conn, (string)$username);
         $sql =  "SELECT privilege FROM user WHERE (username=\"$username\")";
         $r = $conn->query($sql);
         if($r != FALSE){
@@ -323,6 +330,8 @@ class Evote {
      * @return bool Returns true if successfull, false otherwise
      */
     public function vote($options, $personal_code, $current_code){
+        // Alternative IDs go straight into the INSERT below; also stops one code voting twice on the same alternative
+        $options = array_unique(array_map('intval', $options));
         $conn = $this->connect();
         $sql1 = "SELECT pass FROM elections WHERE (active=1)";
         $r = $conn->query($sql1);

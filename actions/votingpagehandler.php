@@ -12,7 +12,7 @@ if (isset($_POST['button'])) {
         $dialogue = new dialogue();
         $ok = true;
         $ongoingR = $evote->ongoingRound();
-        if (!isset($_POST['person'])) {
+        if (!isset($_POST['person']) || !is_array($_POST['person'])) {
             $ok = false;
             $dialogue->appendMessage(getLocalizedText('You have not selected anything to vote on'), 'error');
         } elseif (!$evote->checkRightElection($_POST['person'])) {
